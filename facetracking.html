@@ -41,10 +41,10 @@
 	<body>
 		<script src="./js/headtrackr.js"></script>
 		
-		<canvas id="compare" width="320" height="240" style="display:none"></canvas>
-		<video id="vid" autoplay loop width="320" height="240"></video>
-		<canvas id="overlay" width="320" height="240"></canvas>
-		<canvas id="debug" width="320" height="240"></canvas>
+		<canvas id="compare" width="180" height="240" style="display:none"></canvas>
+		<video id="vid" autoplay loop width="180" height="240"></video>
+		<canvas id="overlay" width="180" height="240"></canvas>
+		<canvas id="debug" width="180" height="240"></canvas>
 		
 		<p id='gUMMessage'></p>
 		<p>Status : <span id='headtrackerMessage'></span></p>
@@ -54,7 +54,9 @@
 		
 		<script>
 		  // set up video and canvas elements needed
-		
+           var video, canvas, streaming = false,
+                  constrainedWidth = 300,
+                  constrainedHeight = 400;
 			var videoInput = document.getElementById('vid');
 			var canvasInput = document.getElementById('compare');
 			var canvasOverlay = document.getElementById('overlay')
@@ -109,7 +111,7 @@
 
 			document.addEventListener("facetrackingEvent", function( event ) {
 				// clear canvas
-				overlayContext.clearRect(0,0,320,240);
+				overlayContext.clearRect(0,0,180,240);
 				// once we have stable tracking, draw rectangle
 				if (event.detection == "CS") {
 

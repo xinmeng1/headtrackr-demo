@@ -86,7 +86,7 @@ headtrackr.Tracker = function(params) {
 	
 	if (!params) params = {};
 	
-	if (params.smoothing === undefined) params.smoothing = true;
+	if (params.smoothing === undefined) params.smoothing = false;
 	if (params.retryDetection === undefined) params.retryDetection = true;
 	if (params.ui === undefined) params.ui = true;
 	if (params.debug === undefined) {
@@ -145,7 +145,13 @@ headtrackr.Tracker = function(params) {
 			return false;
 		}
 	}
-	
+	var vid_constraints = {
+		mandatory: {
+			minAspectRatio: 0.75,
+			maxAspectRatio: 0.75
+		}
+	}
+	var constraints = { audio: false, video: vid_constraints };
 	this.init = function(video, canvas, setupVideo) {
 		if (setupVideo === undefined || setupVideo == true) {
 			navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
@@ -155,7 +161,7 @@ headtrackr.Tracker = function(params) {
 				headtrackerStatus("getUserMedia");
 				
 				// chrome 19 shim
-				var videoSelector = {video : true};
+				var videoSelector = {video : vid_constraints};
 				if (window.navigator.appVersion.match(/Chrome\/(.*?) /)) {
 					var chromeVersion = parseInt(window.navigator.appVersion.match(/Chrome\/(\d+)\./)[1], 10);
 					if (chromeVersion < 20) {
@@ -1398,6 +1404,7 @@ headtrackr.facetrackr.Tracker = function(params) {
   this.track = function() {
     var result;
     // do detection
+	  console.log("current algorithm!" + _currentDetection);
     if (_currentDetection == "WB") {
       result = checkWhitebalance();
     } else if (_currentDetection == "VJ") {
