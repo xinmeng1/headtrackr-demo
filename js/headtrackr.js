@@ -155,6 +155,7 @@ headtrackr.Tracker = function(params) {
 	this.init = function(video, canvas, setupVideo) {
 		if (setupVideo === undefined || setupVideo == true) {
 			navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+			//navigator.getUserMedia = navigator.mediaDevices.getUserMedia || navigator.mediaDevices.webkitGetUserMedia || navigator.mediaDevices.mozGetUserMedia || navigator.mediaDevices.msGetUserMedia;
 			window.URL = window.URL || window.webkitURL || window.msURL || window.mozURL;
 			// check for camerasupport
 			if (navigator.getUserMedia) {

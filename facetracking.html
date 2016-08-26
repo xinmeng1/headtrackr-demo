@@ -40,7 +40,7 @@
 	</head>
 	<body>
 		<script src="./js/headtrackr.js"></script>
-		
+		<script src="./js/stats.min.js"></script>
 		<canvas id="compare" width="180" height="240" style="display:none"></canvas>
 		<video id="vid" autoplay loop width="180" height="240"></video>
 		<canvas id="overlay" width="180" height="240"></canvas>
@@ -54,7 +54,12 @@
 		
 		<script>
 		  // set up video and canvas elements needed
-           var video, canvas, streaming = false,
+		  var stats = new Stats();
+		  stats.showPanel( 1 ); // 0: fps, 1: ms, 2: mb, 3+: custom
+		  document.body.appendChild( stats.dom );
+
+
+		  var video, canvas, streaming = false,
                   constrainedWidth = 300,
                   constrainedHeight = 400;
 			var videoInput = document.getElementById('vid');
