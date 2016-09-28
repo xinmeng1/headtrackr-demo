@@ -413,7 +413,15 @@ headtrackr.Tracker = function(params) {
 	
 	this.stopStream = function() {
 		if (this.stream !== undefined) {
-			this.stream.stop();
+			/*
+			 MediaStreamTrack.stop() is now added to the Chrome.
+
+			 MediaStream.stop() is deprecated in Chrome 45.
+
+			 You should use MediaStream.getVideoTracks() to get video tracks and stop the track using MediaStreamTrack.stop()
+			* */
+			//this.stream.stop();
+			this.stream.getVideoTracks()[0].stop();
 		}
 	}
 	

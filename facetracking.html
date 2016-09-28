@@ -48,10 +48,10 @@
 		
 		<p id='gUMMessage'></p>
 		<p>Status : <span id='headtrackerMessage'></span></p>
-		<p><input type="button" onclick="htracker.stop();htracker.start();" value="reinitiate facedetection"></input>
+		<p><input type="button" onclick="htracker.stop();htracker.start();" value="reinitiate facedetection">
 		<br/><br/>
-		<input type="checkbox" onclick="showProbabilityCanvas()" value="asdfasd"></input>Show probability-map</p>
-		
+		<input type="checkbox" onclick="showProbabilityCanvas()" value="asdfasd">Show probability-map</p>
+		<p><input type="button" onclick="htracker.stopStream()" value="stop"></p>
 		<script>
 		  // set up video and canvas elements needed
 		  var stats = new Stats();
